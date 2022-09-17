@@ -75,8 +75,6 @@ public class InputManager : MonoBehaviour
 
     private void XboxControls()
     {
-        Debug.Log(Input.GetJoystickNames().Length);
-
         //movement input
         float x = Input.GetAxis("Horizontal");
         Vector2 direction = new Vector2(x, 0);
