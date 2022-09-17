@@ -176,7 +176,7 @@ public class IntroUI : MonoBehaviour
 
         if (startMenuOptions[menuIndex] == startMenuOptions[1])
         {
-          
+            menuIndex = 0;
             startScreen.gameObject.SetActive(false);
             optionsScreen.gameObject.SetActive(true);
         }
