@@ -5,12 +5,14 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using SimpleAudioManager;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class IntroUI : MonoBehaviour
 {
     [Header("Start Screen")]
     public Text[] startMenuOptions;
     public GameObject startScreen;
+    public Text versionNumber;
 
     [Header("Option Screen")]
     public Text[] optionMenuOptions;
@@ -39,6 +41,7 @@ public class IntroUI : MonoBehaviour
     }
     private void Start()
     {
+        versionNumber.text = "Version: " + PlayerSettings.bundleVersion;
         startMenuOptions[menuIndex].color = selectedColor;
         optionMenuOptions[menuIndex].color = selectedColor;
         optionsScreen.gameObject.SetActive(false);
