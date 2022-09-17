@@ -44,8 +44,10 @@ public class IntroUI : MonoBehaviour
 
     private void ActionInputEvent(string action)
     {
+        
         if (startScreen.activeSelf)
         {
+            
             if (action == "Select")
             {
                 AudioManager.instance.SelectSound();
@@ -74,7 +76,6 @@ public class IntroUI : MonoBehaviour
                 }
 
             }
-
 
             if (action == "Pause")
             {
@@ -136,10 +137,24 @@ public class IntroUI : MonoBehaviour
 
             if (action == "Pause" && optionMenuOptions[menuIndex] == optionMenuOptions[2])
             {
+                menuIndex = 0;
+                for (int i = 0; i < optionMenuOptions.Length; i++)
+                {
+                    if (menuIndex == i)
+                    {
+                        optionMenuOptions[i].color = selectedColor;
 
+                    }
+                    else
+                    {
+                        optionMenuOptions[i].color = deselectedColor;
+                    }
+                }
                 AudioManager.instance.StartSound();
-                optionsScreen.gameObject.SetActive(false);
+
                 startScreen.gameObject.SetActive(true);
+                optionsScreen.gameObject.SetActive(false);
+
             }
         }
 
@@ -177,8 +192,22 @@ public class IntroUI : MonoBehaviour
         if (startMenuOptions[menuIndex] == startMenuOptions[1])
         {
             menuIndex = 0;
-            startScreen.gameObject.SetActive(false);
+            for (int i = 0; i < startMenuOptions.Length; i++)
+            {
+                if (menuIndex == i)
+                {
+                    startMenuOptions[i].color = selectedColor;
+
+                }
+                else
+                {
+                    startMenuOptions[i].color = deselectedColor;
+                }
+            }
+        
             optionsScreen.gameObject.SetActive(true);
+            startScreen.gameObject.SetActive(false);
+
         }
     }
 
