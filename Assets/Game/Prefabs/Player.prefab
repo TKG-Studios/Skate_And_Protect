@@ -530,5 +530,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldHealth: 100
   maxShieldHealth: 40
-  repletionRate: 0.02
-  depletionRate: 0.01
+  repletionRate: 0.03
+  depletionRate: 0.015

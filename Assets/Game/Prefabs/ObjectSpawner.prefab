@@ -186,3 +186,5 @@ MonoBehaviour:
   spawnInterval: 2
   hazard: {fileID: 82511394478730035, guid: 05eeb1d844bff114bb8ab7bebbf08263, type: 3}
   healthDrop: {fileID: 2415356277807472466, guid: e91fa1510b204924e9cfac759c7ae16f, type: 3}
+  spawnIntervalMin: 0.8
+  spawnIntervalMax: 1.7

@@ -18,6 +18,7 @@ public class IntroUI : MonoBehaviour
     public Text[] optionMenuOptions;
     public GameObject optionsScreen;
     public Text controllerSettingText;
+    public Text warning;
 
     [Header("How To Player Screen")]
     public GameObject howToPlayScreen;
@@ -28,26 +29,64 @@ public class IntroUI : MonoBehaviour
     private Color selectedColor = Color.yellow;
     private int menuIndex = 0;
     private float flickerSpeed = 0.07f;
+
+    //String Array To Hold Joystick Names
+    string[] temp;
+    bool controllerDisconnected;
+
     private void OnEnable()
     {
      
         InputManager.onActionInput += ActionInputEvent;
     }
 
+
     private void OnDisable()
     {
        
         InputManager.onActionInput -= ActionInputEvent;
     }
+
+    private void Awake()
+    {
+        //Get Joystick Names
+          temp = Input.GetJoystickNames();
+    }
     private void Start()
     {
-        versionNumber.text = "Version: " + PlayerSettings.bundleVersion;
+        versionNumber.text = "Version " + Application.version;
         startMenuOptions[menuIndex].color = selectedColor;
         optionMenuOptions[menuIndex].color = selectedColor;
         optionsScreen.gameObject.SetActive(false);
         howToPlayScreen.gameObject.SetActive(false);
+
     }
 
+    private void Update()
+    {
+        //Check whether array contains anything
+        if (temp.Length > 0)
+        {
+            //Iterate over every element
+            for (int i = 0; i < temp.Length; ++i)
+            {
+                //Check if the string is empty or not
+                if (!string.IsNullOrEmpty(temp[i]))
+                {
+                    //Not empty, controller temp[i] is connected
+                    controllerDisconnected = false;
+
+                }
+                else
+                {
+                    //If it is empty, controller i is disconnected
+                    //where i indicates the controller number
+                    controllerDisconnected = true;
+                }
+            }
+        }
+
+    }
 
     private void ActionInputEvent(string action)
     {
@@ -94,7 +133,7 @@ public class IntroUI : MonoBehaviour
 
         if (optionsScreen.activeSelf)
         {
-
+           
             if (action == "Select")
             {
 
@@ -126,9 +165,22 @@ public class IntroUI : MonoBehaviour
 
             if (action == "Pause" && optionMenuOptions[menuIndex] == optionMenuOptions[0] && InputManager.instance.controlSetting == InputManager.CONTROLS.Keyboard)
             {
-                InputManager.instance.controlSetting = InputManager.CONTROLS.Controller;
-                controllerSettingText.text = "Controller";
-                AudioManager.instance.SelectSound();
+                if (!controllerDisconnected)
+                {
+                    InputManager.instance.controlSetting = InputManager.CONTROLS.Controller;
+                    controllerSettingText.text = "Controller";
+                    AudioManager.instance.StartSound();
+                    warning.color = Color.yellow;
+                    warning.text = "Controller Detected";
+                }
+                else if (controllerDisconnected)
+                {
+                    InputManager.instance.controlSetting = InputManager.CONTROLS.Keyboard;
+                    controllerSettingText.text = "Keyboard";
+                    AudioManager.instance.MenuErrorSound();
+                    warning.color = Color.red;
+                    warning.text = "No Controller Detected";
+                }
 
             }
             else if (action == "Pause" && optionMenuOptions[menuIndex] == optionMenuOptions[0] && InputManager.instance.controlSetting == InputManager.CONTROLS.Controller)
@@ -185,7 +237,7 @@ public class IntroUI : MonoBehaviour
                         startMenuOptions[i].color = deselectedColor;
                     }
                 }
-                AudioManager.instance.SelectSound();
+              
                 startScreen.gameObject.SetActive(true);
                 howToPlayScreen.gameObject.SetActive(false);
             }

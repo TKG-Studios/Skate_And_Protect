@@ -13,7 +13,7 @@ public class FloorHazard : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player") && !collision.collider.GetComponent<PlayerHealth>().isInvincible)
         {
             collision.collider.GetComponent<PlayerHealth>().TakeDamage(damageGiven);
             Destroy(gameObject);

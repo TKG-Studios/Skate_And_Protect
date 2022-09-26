@@ -4573,6 +4573,7 @@ MonoBehaviour:
   - {fileID: 944413234}
   optionsScreen: {fileID: 960720389}
   controllerSettingText: {fileID: 260016403}
+  warning: {fileID: 778996166}
   howToPlayScreen: {fileID: 110578478}
 --- !u!1 &778173178
 GameObject:
@@ -4652,6 +4653,86 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778173178}
+  m_CullTransparentMesh: 1
+--- !u!1 &778996164
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 778996165}
+  - component: {fileID: 778996167}
+  - component: {fileID: 778996166}
+  m_Layer: 5
+  m_Name: Warning
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &778996165
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778996164}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1661475285}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 118.3, y: -5.2}
+  m_SizeDelta: {x: 148.2082, y: 12.419}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &778996166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778996164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 486e742f8da2d46e39418a77c2bb6408, type: 2}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: NO CONTROLLER DETECTED
+--- !u!222 &778996167
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778996164}
   m_CullTransparentMesh: 1
 --- !u!1 &799252749
 GameObject:
@@ -5367,6 +5448,10 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: b33b376914599234ebb178e2a035689c, type: 3}
+    - target: {fileID: 2522839630814085010, guid: dd97aee94b84e714db191859667d92c3, type: 3}
+      propertyPath: Priority
+      value: 85
+      objectReference: {fileID: 0}
     - target: {fileID: 6222663422469493093, guid: dd97aee94b84e714db191859667d92c3, type: 3}
       propertyPath: audioSourceName
       value: HealthUp
@@ -6666,6 +6751,7 @@ GameObject:
   - component: {fileID: 1661475285}
   - component: {fileID: 1661475287}
   - component: {fileID: 1661475286}
+  - component: {fileID: 1661475288}
   m_Layer: 5
   m_Name: ControlSetting
   m_TagString: Untagged
@@ -6686,6 +6772,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 260016402}
+  - {fileID: 778996165}
   m_Father: {fileID: 960720390}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6736,6 +6823,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661475284}
   m_CullTransparentMesh: 1
+--- !u!114 &1661475288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661475284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 349b78709e72f3d4daa60f8314fb492f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1710387897
 GameObject:
   m_ObjectHideFlags: 0
@@ -6999,7 +7098,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: VERSION NUMBER
+  m_Text: VERSION 1.1
 --- !u!1 &1739012265
 GameObject:
   m_ObjectHideFlags: 0

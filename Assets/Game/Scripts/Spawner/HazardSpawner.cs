@@ -9,6 +9,10 @@ public class HazardSpawner : Spawner
     private int determineDrop;
     private float spawnIntervalController;
 
+    public float spawnIntervalMin;
+    public float spawnIntervalMax;
+   
+
     private void Update()
     {
         if (GameManager.instance.currentState == GameManager.GameStates.GameActive)
@@ -19,7 +23,7 @@ public class HazardSpawner : Spawner
 
                 if (timeToSpawn <= 0)
                 {
-                    spawnIntervalController = Random.Range(0.8f, 1.5f);
+                    spawnIntervalController = Random.Range(spawnIntervalMin, spawnIntervalMax);
                     spawnInterval = spawnIntervalController;
                     timeToSpawn = spawnInterval;
                     AudioManager.instance.HazardDrop();

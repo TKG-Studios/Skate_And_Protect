@@ -6,10 +6,11 @@ public class PlayerHealth : MonoBehaviour
 {
     public static PlayerHealth instance;
     public int maxHealth;
+    public bool isInvincible;
 
     [HideInInspector]
     public int health;
-
+    public float invinciblityTimer = 8f;
     public SpriteRenderer[] sprites;
     private BoxCollider2D col;
 
@@ -50,12 +51,36 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    //private IEnumerator DestroyPlayer()
-    //{
-    //    yield return new WaitForSeconds(.05f);
-    //    Destroy(sprites[0]);
-    //}
+    public void Invincibility()
+    {
+        isInvincible = true;
+        StartCoroutine(ColorFlicker());
+       
+      
+    }
 
+    private IEnumerator ColorFlicker()
+    {
+ 
+      
+        while (isInvincible)
+        {
+           
+            sprites[0].color = Color.yellow;
+            yield return new WaitForSeconds(flickerSpeed);
+            sprites[0].color = Color.white;
+            yield return new WaitForSeconds(flickerSpeed);
+            invinciblityTimer -= 10 * Time.deltaTime;
+            Debug.Log(invinciblityTimer);
+            if (invinciblityTimer <= 0)
+            {
+                invinciblityTimer = 0;
+                isInvincible = false;
+            }
+        }
+
+     
+    }
     private IEnumerator FlickerSprite()
     {
         col.enabled = false;

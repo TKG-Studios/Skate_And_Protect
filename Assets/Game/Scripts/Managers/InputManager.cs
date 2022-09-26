@@ -75,14 +75,16 @@ public class InputManager : MonoBehaviour
 
     private void XboxControls()
     {
-        //movement input
-        float x = Input.GetAxis("Horizontal");
-        Vector2 direction = new Vector2(x, 0);
-        InputEvent(direction.normalized);
+        
+            //movement input
+            float x = Input.GetAxis("Horizontal");
+            Vector2 direction = new Vector2(x, 0);
+            InputEvent(direction.normalized);
 
-        //Action Inputs
-        if (Input.GetKeyDown(xboxShield)) onActionInput("Shield");
-        if (Input.GetKeyDown(xboxPause)) onActionInput("Pause");
-        if (Input.GetKeyDown(xboxSelect)) onActionInput("Select");
+            //Action Inputs
+            if (Input.GetKeyDown(xboxShield)) onActionInput("Shield");
+            if (Input.GetKeyDown(xboxPause)) onActionInput("Pause");
+            if (Input.GetKeyDown(xboxSelect)) onActionInput("Select");
+        
     }
 }

@@ -9,10 +9,6 @@ public class GameOver : MonoBehaviour
     public Text lost;
     public Text final;
     public Text restartInstruction;
-    void Start()
-    {
-      
-    }
     
 
     // Update is called once per frame

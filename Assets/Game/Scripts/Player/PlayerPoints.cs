@@ -33,6 +33,10 @@ public class PlayerPoints : MonoBehaviour
     public int InnocentMath()
     {
         int innocentTotal = (innocentsSaved - innocentsLost) * 100;
+        if (innocentTotal < 0)
+        {
+            innocentTotal = 0;
+        }
         return innocentTotal;
     }
 }
