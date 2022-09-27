@@ -22,6 +22,10 @@ public class InnocentWalkScript : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (GameManager.instance.currentState == GameManager.GameStates.GameOver)
+        {
+            Destroy(gameObject);
+        }
         Vector2 move = new Vector2(walkDirection, 0) * movementSpeed * Time.deltaTime;
         transform.Translate(move);
     }

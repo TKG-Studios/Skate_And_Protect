@@ -304,7 +304,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
+  isInvincible: 0
   health: 3
+  invinciblityInitialTimer: 5
+  invinciblityTimer: 0
   sprites:
   - {fileID: 5082032992387181952}
   - {fileID: 8053212016265489939}
@@ -320,6 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cfcfa6d41069dd47a47db892b681ad0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InvincibilitySpawner: {fileID: 0}
   innocentsSaved: 0
   innocentsLost: 0
 --- !u!61 &8053212016141856372
@@ -470,7 +474,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0073143244, y: -0.0073143244}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -481,7 +485,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.0146286, y: 1.4096053}
   m_EdgeRadius: 0
 --- !u!95 &3344911991180767426
 Animator:
@@ -532,3 +536,4 @@ MonoBehaviour:
   maxShieldHealth: 40
   repletionRate: 0.03
   depletionRate: 0.015
+  invincible: 0

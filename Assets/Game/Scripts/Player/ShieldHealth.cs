@@ -11,6 +11,7 @@ public class ShieldHealth : MonoBehaviour
     public float repletionRate;
     public float depletionRate;
 
+    public bool invincible;
     private void Start()
     {
         instance = this;
@@ -20,6 +21,15 @@ public class ShieldHealth : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (PlayerHealth.instance.isInvincible == true)
+        {
+            invincible = true;
+            
+        } else
+        {
+            invincible = false;
+        }
+
         if (shieldHealth <= maxShieldHealth)
         {
             if (ShieldAnimator.instance.animator.GetBool("ShieldUp") == false)

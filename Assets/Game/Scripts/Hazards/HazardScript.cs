@@ -18,9 +18,13 @@ public class HazardScript : MonoBehaviour
             AudioManager.instance.ShieldHit();
             ShieldHealth.instance.ShieldDamage((float)damageGiven * damageMultiplier);
         }
-        else if (collision.collider.CompareTag("Shield") && ShieldAnimator.instance.animator.GetBool("ShieldUp") == false)
+        else if (collision.collider.CompareTag("Shield") && ShieldAnimator.instance.animator.GetBool("ShieldUp") == false && !collision.collider.GetComponent<ShieldHealth>().invincible)
         {
             collision.collider.GetComponentInParent<PlayerHealth>().TakeDamage(damageGiven);
+        }
+        else if (collision.collider.CompareTag("Shield") && collision.collider.GetComponent<ShieldHealth>().invincible)
+        {
+            Destroy(gameObject);
         }
 
         if (collision.collider.CompareTag("Ground"))

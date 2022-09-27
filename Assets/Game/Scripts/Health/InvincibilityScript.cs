@@ -6,12 +6,21 @@ using UnityEngine;
 public class InvincibilityScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    public float randomX;
+    public float randomY;
+    private void Start()
     {
-        if (collision.collider.CompareTag("Player"))
+        randomX = Random.Range(-500, -200);
+        randomY = Random.Range(25, 100);
+        GetComponent<Rigidbody2D>().AddForce(new Vector3(randomX, randomY, 0));
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") || collision.CompareTag("Shield"))
         {
             AudioManager.instance.PowerUp();
-            collision.collider.GetComponent<PlayerHealth>().Invincibility();
+            collision.GetComponent<PlayerHealth>().Invincibility();
             Destroy(gameObject);
         }
     }

@@ -8,7 +8,9 @@ public class InvincibilitySpawner : Spawner
     public static InvincibilitySpawner instance;
     public override void SpawnItem(GameObject itemToSpawn)
     {
+      
         base.SpawnItem(invincibility);
+       
     }
 
 }

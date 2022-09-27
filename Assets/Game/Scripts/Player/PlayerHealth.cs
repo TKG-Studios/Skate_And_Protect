@@ -90,19 +90,22 @@ public class PlayerHealth : MonoBehaviour
         col.enabled = false;
         if (health > (maxHealth - 1))
         {
-            foreach (SpriteRenderer sprite in sprites)
+            if (sprites != null)
             {
-                sprite.enabled = false;
-                yield return new WaitForSeconds(flickerSpeed);
-                sprite.enabled = true;
-                yield return new WaitForSeconds(flickerSpeed);
-                sprite.enabled = false;
-                yield return new WaitForSeconds(flickerSpeed);
-                sprite.enabled = true;
-                yield return new WaitForSeconds(flickerSpeed);
-                sprite.enabled = false;
-                yield return new WaitForSeconds(flickerSpeed);
-                sprite.enabled = true;
+                foreach (SpriteRenderer sprite in sprites)
+                {
+                    sprite.enabled = false;
+                    yield return new WaitForSeconds(flickerSpeed);
+                    sprite.enabled = true;
+                    yield return new WaitForSeconds(flickerSpeed);
+                    sprite.enabled = false;
+                    yield return new WaitForSeconds(flickerSpeed);
+                    sprite.enabled = true;
+                    yield return new WaitForSeconds(flickerSpeed);
+                    sprite.enabled = false;
+                    yield return new WaitForSeconds(flickerSpeed);
+                    sprite.enabled = true;
+                }
             }
         }
         
