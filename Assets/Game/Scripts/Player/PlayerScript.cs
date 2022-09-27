@@ -54,6 +54,8 @@ public class PlayerScript : MonoBehaviour
     private void Update()
     {
         currentState = GameManager.instance.currentState;
+      
+       
     }
 
     private void InputEvent(Vector2 direction)

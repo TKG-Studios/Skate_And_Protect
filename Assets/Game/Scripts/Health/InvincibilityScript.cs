@@ -1,3 +1,4 @@
+using SimpleAudioManager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class InvincibilityScript : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            AudioManager.instance.PowerUp();
             collision.collider.GetComponent<PlayerHealth>().Invincibility();
             Destroy(gameObject);
         }

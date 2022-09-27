@@ -60,6 +60,12 @@ namespace SimpleAudioManager
             gameSounds[6].Play();
         }
 
+        public void PowerUp()
+        {
+            gameSounds[7].Stop();
+            gameSounds[7].Play();
+        }
+
         //User Interface Sounds
 
         public void GameOver()

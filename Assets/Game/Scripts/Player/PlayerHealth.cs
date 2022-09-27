@@ -10,7 +10,8 @@ public class PlayerHealth : MonoBehaviour
 
     [HideInInspector]
     public int health;
-    public float invinciblityTimer = 8f;
+    public float invinciblityInitialTimer = 5;
+    public float invinciblityTimer;
     public SpriteRenderer[] sprites;
     private BoxCollider2D col;
 
@@ -18,6 +19,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
+        invinciblityTimer = invinciblityInitialTimer;
         instance = this;
         health = maxHealth;
         col = GetComponent<BoxCollider2D>();
@@ -54,6 +56,7 @@ public class PlayerHealth : MonoBehaviour
     public void Invincibility()
     {
         isInvincible = true;
+        LevelMusic.instance.playTrack3(); 
         StartCoroutine(ColorFlicker());
        
       
@@ -74,8 +77,9 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log(invinciblityTimer);
             if (invinciblityTimer <= 0)
             {
-                invinciblityTimer = 0;
                 isInvincible = false;
+                invinciblityTimer = invinciblityInitialTimer;
+                LevelMusic.instance.playTrack1();
             }
         }
 

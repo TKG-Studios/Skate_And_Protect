@@ -19,17 +19,13 @@ namespace SimpleAudioManager
                 playTrack2();
             }
 
-         
-
-
-
         }
 
         public void playTrack1()
         {
             if (playMusic)
             {
-                trackList[1].Stop();
+                StopTrack();
                 trackList[0].Stop();
                 trackList[0].Play();
             }
@@ -39,14 +35,31 @@ namespace SimpleAudioManager
         {
             if (playMusic)
             {
+                StopTrack();
                 trackList[1].Stop();
                 trackList[1].Play();
             }
         }
 
-        public void StopTrack1()
+        public void playTrack3()
         {
-            trackList[0].Stop();
+            if (playMusic)
+            {
+                StopTrack();
+                trackList[2].Stop();
+                trackList[2].Play();
+            }
+        }
+
+        public void StopTrack()
+        {
+            foreach (AudioSource track in trackList)
+            {
+                if (track.isPlaying)
+                {
+                    track.Stop();
+                }
+            }
         }
     }
 }

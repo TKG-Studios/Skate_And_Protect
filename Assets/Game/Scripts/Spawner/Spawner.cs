@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour
         timeToSpawn = spawnInterval;
     }
 
-    public void SpawnItem(GameObject itemToSpawn)
+    public virtual void SpawnItem(GameObject itemToSpawn)
     {
         Instantiate(itemToSpawn, transform.position, Quaternion.identity);
     }

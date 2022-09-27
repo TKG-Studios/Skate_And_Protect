@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
             HUD.SetActive(false);
         }
        
-        LevelMusic.instance.StopTrack1();
+        LevelMusic.instance.StopTrack();
         AudioManager.instance.GameOver();
         if (PlayerHealth.instance != null)
         {
